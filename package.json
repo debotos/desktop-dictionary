@@ -1,0 +1,66 @@
+{
+  "name": "desktop-dictionary",
+  "version": "0.1.0",
+  "private": true,
+  "author": {
+    "name": "Debotos Das",
+    "email": "debotosdas@gmail.com"
+  },
+  "dependencies": {
+    "bluebird": "^3.5.1",
+    "knex": "^0.14.6",
+    "lodash": "^4.17.10",
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0",
+    "react-scripts": "1.0.17",
+    "sqlite3": "^4.0.0"
+  },
+  "devDependencies": {
+    "electron": "1.8.4",
+    "electron-builder": "20.15.1",
+    "electron-rebuild": "^1.7.3",
+    "foreman": "^2.0.0"
+  },
+  "scripts": {
+    "dev": "nf start",
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject",
+    "electron": "electron .",
+    "rebuild": "electron-rebuild -f -w sqlite3",
+    "ebuild": "yarn build && node_modules/.bin/build"
+  },
+  "description": "Dictionary Software for Desktop",
+  "homepage": "./",
+  "main": "electron/main.js",
+  "build": {
+    "productName": "Desktop Dictionary",
+    "appId": "com.dictionary.debotos.das",
+    "electronVersion": "2.0.2",
+    "extends": null,
+    "files": [
+      "build/**/*",
+      "electron/*"
+    ],
+    "win": {
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "x64",
+            "ia32"
+          ]
+        }
+      ],
+      "icon": "build/icon.ico"
+    },
+    "linux": {
+      "target": [
+        "deb",
+        "AppImage"
+      ],
+      "category": "Development"
+    }
+  }
+}
