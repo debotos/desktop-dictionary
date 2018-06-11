@@ -29,7 +29,8 @@
     "eject": "react-scripts eject",
     "electron": "electron .",
     "rebuild": "electron-rebuild -f -w sqlite3",
-    "ebuild": "yarn build && node_modules/.bin/build"
+    "ebuild": "yarn build && node_modules/.bin/build -wl",
+    "dist": "node_modules/.bin/build -wl"
   },
   "description": "Dictionary Software for Desktop",
   "homepage": "./",
@@ -44,15 +45,13 @@
       "electron/*"
     ],
     "win": {
-      "target": [
-        {
-          "target": "nsis",
-          "arch": [
-            "x64",
-            "ia32"
-          ]
-        }
-      ],
+      "target": [{
+        "target": "nsis",
+        "arch": [
+          "x64",
+          "ia32"
+        ]
+      }],
       "icon": "build/icon.ico"
     },
     "linux": {
@@ -61,6 +60,10 @@
         "AppImage"
       ],
       "category": "Development"
+    },
+    "directories": {
+      "buildResources": "resources",
+      "output": "release"
     }
   }
 }

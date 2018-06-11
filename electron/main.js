@@ -228,14 +228,6 @@ const menuTemplate = [
       { role: 'zoomin' },
       { role: 'zoomout' },
       {
-        label: 'Toggle Developer Tools',
-        accelerator:
-          process.platform === 'darwin' ? 'Command+Alt+I' : 'Ctrl+Shift+I',
-        click(item, focusedWindow) {
-          focusedWindow.toggleDevTools();
-        }
-      },
-      {
         label: 'Quit',
         accelerator: process.platform === 'darwin' ? 'Command+Q' : 'Ctrl+Q',
         click() {

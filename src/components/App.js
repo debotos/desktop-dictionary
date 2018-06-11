@@ -34,7 +34,7 @@ class App extends Component {
 
   componentDidMount() {
     ipcRenderer.on('searching:end', (event, { english, other }) => {
-      console.log('Result Found => ', english, other);
+      // console.log('Result Found => ', english, other);
       this.setState({ data: this.mergeTwoArrayContent(english, other) });
       this.setState({ loading: false });
     });
