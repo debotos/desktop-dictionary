@@ -5,10 +5,45 @@ const url = require('url');
 var knex = require('knex')({
   client: 'sqlite3',
   connection: {
-    filename: path.resolve(__dirname, 'db', 'database.db')
+    filename: path.join(__dirname, '/database.db').replace('/app.asar', '')
   },
   useNullAsDefault: true
 });
+
+// let englishWords;
+// let banglaWords = [];
+// knex
+//   .select('*')
+//   .from('eng')
+//   .where('word', 'like', `some%`)
+//   .limit(6)
+//   .then(function(englishRows) {
+//     englishWords = englishRows;
+//     return englishRows;
+//   })
+//   .then(function(english) {
+//     return Promise.all(
+//       english.map(singleItem =>
+//         knex
+//           .select('*')
+//           .from('other')
+//           .where({ serial: `${singleItem.serial}` })
+//           .then(function(banglaRow) {
+//             banglaWords.push(...banglaRow);
+//             return banglaRow;
+//           })
+//           .catch(function(error) {
+//             console.error(error);
+//           })
+//       )
+//     );
+//   })
+//   .then(() => {
+//     console.log('searching:end', { englishWords, banglaWords });
+//   })
+//   .catch(function(error) {
+//     console.error(error);
+//   });
 
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
@@ -227,6 +262,14 @@ const menuTemplate = [
       { role: 'resetzoom' },
       { role: 'zoomin' },
       { role: 'zoomout' },
+      // {
+      //   label: 'Toggle Developer Tools',
+      //   accelerator:
+      //     process.platform === 'darwin' ? 'Command+Alt+I' : 'Ctrl+Shift+I',
+      //   click(item, focusedWindow) {
+      //     focusedWindow.toggleDevTools();
+      //   }
+      // },
       {
         label: 'Quit',
         accelerator: process.platform === 'darwin' ? 'Command+Q' : 'Ctrl+Q',

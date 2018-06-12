@@ -30,7 +30,8 @@
     "electron": "electron .",
     "rebuild": "electron-rebuild -f -w sqlite3",
     "ebuild": "yarn build && node_modules/.bin/build -wl",
-    "dist": "node_modules/.bin/build -wl"
+    "dist": "node_modules/.bin/build -wl",
+    "postinstall": "electron-builder install-app-deps"
   },
   "description": "Dictionary Software for Desktop",
   "homepage": "./",
@@ -38,11 +39,13 @@
   "build": {
     "productName": "Desktop Dictionary",
     "appId": "com.dictionary.debotos.das",
-    "electronVersion": "2.0.2",
+    "electronVersion": "1.8.4",
     "extends": null,
+    "extraResources": ["./electron/database.db"],
+    "buildDependenciesFromSource": true,
     "files": [
       "build/**/*",
-      "electron/*"
+      "electron/**/*"
     ],
     "win": {
       "target": [{
